@@ -1,7 +1,7 @@
 import { Container, Title, Space, MantineProvider } from "@mantine/core";
-import ShortenUrlForm from "./ShortenUrlForm";
-import UrlInfo from "./UrlInfo";
-import DeleteUrl from "./DeleteUrl";
+import ShortenUrlForm from "../features/shorten-url";
+import UrlInfo from "../features/url-info";
+import DeleteUrl from "../features/delete-url";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
