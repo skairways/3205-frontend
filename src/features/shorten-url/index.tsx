@@ -1,22 +1,8 @@
 import React, { useState } from "react";
 import { TextInput, Button, Group, Text } from "@mantine/core";
 import { useMutation } from "react-query";
-import clientApi, { baseURL } from "../shared/api/base-api";
-
-// Define the type for the response
-type ShortenedUrlResponse = {
-  shortUrl: string;
-  originalUrl: string;
-};
-
-const shortenUrl = async (
-  originalUrl: string
-): Promise<ShortenedUrlResponse> => {
-  const response = await clientApi.post("shorten", {
-    originalUrl,
-  });
-  return response.data;
-};
+import { shortenUrl } from "./api";
+import { baseURL } from "../../shared/api";
 
 const ShortenUrlForm: React.FC = () => {
   const [originalUrl, setOriginalUrl] = useState<string>("");

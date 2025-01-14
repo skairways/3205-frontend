@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { TextInput, Button, Group, Text } from "@mantine/core";
 import { useMutation } from "react-query";
-import clientApi from "../shared/api/base-api";
-
-const deleteUrl = async (shortUrl: string) => {
-  await clientApi.delete(`delete/${shortUrl}`);
-};
+import { deleteUrl } from "./api";
 
 const DeleteUrl: React.FC = () => {
   const [shortUrl, setShortUrl] = useState<string>("");

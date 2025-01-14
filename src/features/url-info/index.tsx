@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import { TextInput, Button, Group, Text, Loader } from "@mantine/core";
 import { useQuery } from "react-query";
-import clientApi from "../shared/api/base-api";
-
-type UrlInfoResponse = {
-  originalUrl: string;
-  createdAt: string;
-  clickCount: number;
-};
-
-const fetchUrlInfo = async (shortUrl: string): Promise<UrlInfoResponse> => {
-  const response = await clientApi.get(`info/${shortUrl}`);
-  return response.data;
-};
+import { UrlInfoResponse } from "./types";
+import { fetchUrlInfo } from "./api";
 
 const UrlInfo: React.FC = () => {
   const [shortUrl, setShortUrl] = useState<string>("");
@@ -22,7 +12,7 @@ const UrlInfo: React.FC = () => {
     useQuery<UrlInfoResponse | null>(
       ["urlInfo", shortUrl],
       () => fetchUrlInfo(shortUrl),
-      { enabled: false } // Do not fetch automatically
+      { enabled: false }
     );
 
   const handleSubmit = () => {
